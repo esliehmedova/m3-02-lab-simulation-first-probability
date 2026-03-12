@@ -105,51 +105,6 @@ A factory produces widgets with a 3% defect rate. A quality inspector samples 50
 
 **Guiding question:** How close are your empirical estimates to the theoretical values? Would 1,000 batches have been enough, or do you need 10,000?
 
-### Task 4: Conditional Probability by Simulation
-
-A medical test has the following characteristics:
-- **Prevalence** (prior probability of disease): 1%
-- **Sensitivity** (true positive rate): 95%
-- **Specificity** (true negative rate): 90%
-
-You want to estimate: *If a person tests positive, what is the probability they actually have the disease?* (This is the positive predictive value.)
-
-1. Simulate **1,000,000** people:
-   - Assign disease status: each person has a 1% chance of having the disease.
-   - For diseased people, the test returns positive with 95% probability.
-   - For healthy people, the test returns positive with 10% probability (1 − specificity).
-2. Filter the simulation to only people who tested positive.
-3. Among those who tested positive, compute the proportion who actually have the disease.
-4. Compare your simulation result to the analytical answer from Bayes' theorem:
-
-```
-P(Disease | Positive) = (0.95 × 0.01) / ((0.95 × 0.01) + (0.10 × 0.99))
-```
-
-5. Create a stacked bar chart or mosaic-style visualization showing the breakdown: true positives, false positives, true negatives, and false negatives.
-
-**Guiding question:** Why is the positive predictive value so much lower than the sensitivity? What role does prevalence play?
-
-### Task 5: Visualizing the Law of Large Numbers
-
-Bring everything together with a general-purpose convergence visualization.
-
-1. Choose a random variable with a known expected value — for example, the sum of two fair dice (expected value = 7).
-2. Simulate **50,000** rolls of two dice and compute the cumulative mean after each roll.
-3. Plot the cumulative mean with a horizontal line at the theoretical expected value.
-4. Add a **shaded confidence band** around the expected value: ±1.96 × σ / √n for each n (where σ is the standard deviation of the sum of two dice). This band shows how uncertainty shrinks as n grows.
-5. Repeat with a highly skewed distribution (e.g., a Pareto or log-normal) and create a side-by-side comparison plot. Does skewness affect how quickly the running mean converges?
-
-**Guiding question:** The Law of Large Numbers guarantees convergence — but does the *speed* of convergence depend on the distribution shape? What did you observe?
-
-### Task 6: Reflection — When to Simulate
-
-In a final markdown cell, address the following:
-
-1. Name **two scenarios** from your experience (or that you can imagine in a data science role) where simulation would be more practical than an analytical formula.
-2. What are the trade-offs of simulation? (Think about computation time, reproducibility, and precision.)
-3. How does setting a random seed affect your results, and why is it important for reproducibility?
-
 ## Submission
 
 ### What to submit
@@ -158,12 +113,10 @@ In a final markdown cell, address the following:
 
 ### Definition of done (checklist)
 
-- [ ] All six tasks are completed with code and visible outputs.
+- [ ] All three tasks are completed with code and visible outputs.
 - [ ] Monte Carlo π estimate is within ±0.02 of true π (with 100,000 samples).
 - [ ] Convergence plots clearly show stabilization over increasing sample sizes.
-- [ ] Conditional probability simulation result is compared to the Bayes' theorem calculation.
-- [ ] Law of Large Numbers plots include the confidence band.
-- [ ] Markdown reflections are thoughtful and specific (not one-word answers).
+- [ ] Binomial simulation results are compared to theoretical values.
 - [ ] The notebook runs top-to-bottom without errors (`Kernel → Restart & Run All`).
 
 ### How to submit (Git workflow)
